@@ -11,11 +11,15 @@ const Expenses = (props) => {
     newFilteredYear(year);
   };
 
+  const filteredExpenses = props.zeExpenses.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
   return (
     <div>
       <Card className="expenses">
         <ExpensesFilter selected={filteredYear} onAddFilter={filterHandler} />
-        {props.zeExpenses.map((expense) => (
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
