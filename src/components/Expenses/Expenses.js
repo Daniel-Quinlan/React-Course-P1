@@ -15,26 +15,14 @@ const Expenses = (props) => {
     <div>
       <Card className="expenses">
         <ExpensesFilter selected={filteredYear} onAddFilter={filterHandler} />
-        <ExpenseItem
-          title={props.zeExpenses[0].title}
-          amount={props.zeExpenses[0].amount}
-          date={props.zeExpenses[0].date}
-        />
-        <ExpenseItem
-          title={props.zeExpenses[1].title}
-          amount={props.zeExpenses[1].amount}
-          date={props.zeExpenses[1].date}
-        />
-        <ExpenseItem
-          title={props.zeExpenses[2].title}
-          amount={props.zeExpenses[2].amount}
-          date={props.zeExpenses[2].date}
-        />
-        <ExpenseItem
-          title={props.zeExpenses[3].title}
-          amount={props.zeExpenses[3].amount}
-          date={props.zeExpenses[3].date}
-        />
+        {props.zeExpenses.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))}
       </Card>
     </div>
   );
